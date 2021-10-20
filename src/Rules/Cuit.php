@@ -7,7 +7,7 @@ use Illuminate\Support\Str;
 
 class Cuit implements Rule
 {
-    const TYPES = [
+    public const TYPES = [
         20,
         23,
         24,
