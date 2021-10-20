@@ -1,0 +1,55 @@
+{
+  "name": "iutrace/laravel-cuit-validator",
+  "description": "Argentinian CUIT Validator",
+  "type": "library",
+  "keywords": [
+    "iutrace",
+    "laravel",
+    "cuit",
+    "validator"
+  ],
+  "homepage": "https://github.com/iutrace/laravel-cuit-validator",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Facundo Lezcano",
+      "email": "flezcano@iupik.com"
+    }
+  ],
+  "require": {
+    "php": "^7.3|^8.0",
+    "illuminate/support": "^6.0|^7.0|^8.0"
+  },
+  "require-dev": {
+    "friendsofphp/php-cs-fixer": "^3.2",
+    "orchestra/testbench": "^4.5|^5.0|^6.0",
+    "phpunit/phpunit": "^8.0|^9.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Iutrace\\Validation\\": "src/"
+    },
+    "exclude-from-classmap": [
+      "/tests/"
+    ]
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Iutrace\\Validation\\Tests\\": "tests/"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Iutrace\\Validation\\CuitValidatorProvider"
+      ]
+    }
+  },
+  "scripts": {
+    "test": "vendor/bin/phpunit",
+    "test-coverage": "XDEBUG_MODE=coverage vendor/bin/phpunit --coverage-html coverage",
+    "format": "vendor/bin/php-cs-fixer fix --allow-risky=yes"
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
+}
