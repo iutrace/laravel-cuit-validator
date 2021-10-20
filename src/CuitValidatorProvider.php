@@ -4,7 +4,7 @@ namespace Iutrace\Validation;
 
 use Illuminate\Support\ServiceProvider;
 
-class CuitValidatorServiceProvider extends ServiceProvider
+class CuitValidatorProvider extends ServiceProvider
 {
     public function boot()
     {
