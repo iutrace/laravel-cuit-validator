@@ -25,10 +25,23 @@ class Cuit implements Rule
     /**
      * @inheritDoc
      */
-    public function passes($attribute, $value)
+    public function passes($attribute, $value): bool
     {
         $this->attribute = $attribute;
 
+        return static::validate($value);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function message()
+    {
+        return static::replacerMessage($this->attribute);
+    }
+
+    public static function validate($value): bool
+    {
         if (strlen($value) != 11) {
             return false;
         }
@@ -63,13 +76,10 @@ class Cuit implements Rule
         return $verifier == $calculatedVerifier;
     }
 
-    /**
-     * @inheritDoc
-     */
-    public function message()
+    public static function replacerMessage($attribute)
     {
         return __('iutrace::validation.cuit', [
-            'attribute' => $this->attribute,
+            'attribute' => $attribute,
         ]);
     }
 }

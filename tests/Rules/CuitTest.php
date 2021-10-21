@@ -60,7 +60,7 @@ class CuitTest extends TestCase
                 'cuit' => null,
             ],
             [
-                'cuit' => ['nullable', new Cuit()],
+                'cuit' => ['nullable', 'cuit'],
             ]
         )->passes());
 
@@ -69,7 +69,7 @@ class CuitTest extends TestCase
                 'cuit' => null,
             ],
             [
-                'cuit' => [new Cuit()],
+                'cuit' => ['cuit'],
             ]
         )->fails());
     }
@@ -81,7 +81,7 @@ class CuitTest extends TestCase
                 'cuit' => '',
             ],
             [
-                'cuit' => ['nullable', new Cuit()],
+                'cuit' => ['nullable', 'cuit'],
             ]
         )->passes());
 
@@ -90,7 +90,7 @@ class CuitTest extends TestCase
                 'cuit' => '',
             ],
             [
-                'cuit' => [new Cuit()],
+                'cuit' => ['cuit'],
             ]
         )->passes());
     }
@@ -102,7 +102,7 @@ class CuitTest extends TestCase
                 'cuit' => null,
             ],
             [
-                'cuit' => ['required', new Cuit()],
+                'cuit' => ['required', 'cuit'],
             ]
         )->fails());
 
@@ -111,7 +111,7 @@ class CuitTest extends TestCase
                 'cuit' => '',
             ],
             [
-                'cuit' => ['required', new Cuit()],
+                'cuit' => ['required', 'cuit'],
             ]
         )->fails());
 
@@ -120,8 +120,20 @@ class CuitTest extends TestCase
                 'cuit' => '20123456786',
             ],
             [
-                'cuit' => ['required', new Cuit()],
+                'cuit' => ['required', 'cuit'],
             ]
         )->passes());
+    }
+
+    public function test_fail_message()
+    {
+        $this->assertTrue(Validator::make(
+            [
+                'cuit' => '20123456785',
+            ],
+            [
+                'cuit' => ['nullable', new Cuit()],
+            ]
+        )->fails());
     }
 }

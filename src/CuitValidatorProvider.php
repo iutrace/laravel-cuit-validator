@@ -2,7 +2,9 @@
 
 namespace Iutrace\Validation;
 
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\ServiceProvider;
+use Iutrace\Validation\Rules\Cuit;
 
 class CuitValidatorProvider extends ServiceProvider
 {
@@ -13,5 +15,10 @@ class CuitValidatorProvider extends ServiceProvider
         ]);
 
         $this->loadTranslationsFrom(__DIR__.'/../resources/lang/', 'iutrace');
+
+        Validator::extend('cuit', Cuit::class . '@passes');
+        Validator::replacer('cuit', function ($message, $attribute) {
+            return Cuit::replacerMessage($attribute);
+        });
     }
 }
