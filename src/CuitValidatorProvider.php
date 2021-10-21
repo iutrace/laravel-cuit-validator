@@ -4,6 +4,7 @@ namespace Iutrace\Validation;
 
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\ServiceProvider;
+use Iutrace\Validation\Rules\Cuil;
 use Iutrace\Validation\Rules\Cuit;
 
 class CuitValidatorProvider extends ServiceProvider
@@ -19,6 +20,11 @@ class CuitValidatorProvider extends ServiceProvider
         Validator::extend('cuit', Cuit::class . '@passes');
         Validator::replacer('cuit', function ($message, $attribute) {
             return Cuit::replacerMessage($attribute);
+        });
+
+        Validator::extend('cuil', Cuil::class . '@passes');
+        Validator::replacer('cuil', function ($message, $attribute) {
+            return Cuil::replacerMessage($attribute);
         });
     }
 }

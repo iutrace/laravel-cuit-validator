@@ -46,7 +46,7 @@ class Cuit implements Rule
             return false;
         }
 
-        if (! Str::startsWith($value, self::TYPES)) {
+        if (! Str::startsWith($value, static::TYPES)) {
             return false;
         }
 

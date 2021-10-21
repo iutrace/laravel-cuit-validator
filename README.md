@@ -1,5 +1,5 @@
-# CUIT Validator
-Argentinian CUIT Rule for laravel validation
+# CUIT/CUIL Validator
+Argentinian CUIT and CUIL Rules for laravel validation
 
 ## Installation
 
@@ -15,20 +15,38 @@ Example of a required and valid CUIT field
 use Illuminate\Routing\Controller;
 use Illuminate\Http\Request;
 
-use Iutrace\Validation\Rules\Cuit;
-
 class ExampleController extends Controller
 {   
     public function verify(Request $request)
     {
         $data = $request->validate([
             'cuit' => [
-                'required',
-                new Cuit(),
+                'required|cuit',
             ],
         ]);
         
         return $data['cuit'] . ' is a valid CUIT';
+    }
+}
+```
+
+Example of a required and valid CUIL field
+
+```php
+use Illuminate\Routing\Controller;
+use Illuminate\Http\Request;
+
+class ExampleController extends Controller
+{   
+    public function verify(Request $request)
+    {
+        $data = $request->validate([
+            'cuil' => [
+                'required|cuil',
+            ],
+        ]);
+        
+        return $data['cuil'] . ' is a valid CUIL';
     }
 }
 ```

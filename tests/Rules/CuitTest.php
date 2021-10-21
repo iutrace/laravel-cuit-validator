@@ -45,12 +45,12 @@ class CuitTest extends TestCase
 
     public function test_null_cuit_fails()
     {
-        $this->assertFalse($this->cuit->passes(null, '20123456785'));
+        $this->assertFalse($this->cuit->passes('cuit', null));
     }
 
     public function test_empty_cuit_fails()
     {
-        $this->assertFalse($this->cuit->passes('', '20123456785'));
+        $this->assertFalse($this->cuit->passes('cuit', ''));
     }
 
     public function test_nullable_field()
@@ -60,7 +60,7 @@ class CuitTest extends TestCase
                 'cuit' => null,
             ],
             [
-                'cuit' => ['nullable', 'cuit'],
+                'cuit' => 'nullable|cuit',
             ]
         )->passes());
 
@@ -69,7 +69,7 @@ class CuitTest extends TestCase
                 'cuit' => null,
             ],
             [
-                'cuit' => ['cuit'],
+                'cuit' => 'cuit',
             ]
         )->fails());
     }
@@ -81,7 +81,7 @@ class CuitTest extends TestCase
                 'cuit' => '',
             ],
             [
-                'cuit' => ['nullable', 'cuit'],
+                'cuit' => 'nullable|cuit',
             ]
         )->passes());
 
@@ -90,7 +90,7 @@ class CuitTest extends TestCase
                 'cuit' => '',
             ],
             [
-                'cuit' => ['cuit'],
+                'cuit' => 'cuit',
             ]
         )->passes());
     }
@@ -102,7 +102,7 @@ class CuitTest extends TestCase
                 'cuit' => null,
             ],
             [
-                'cuit' => ['required', 'cuit'],
+                'cuit' => 'required|cuit',
             ]
         )->fails());
 
@@ -111,7 +111,7 @@ class CuitTest extends TestCase
                 'cuit' => '',
             ],
             [
-                'cuit' => ['required', 'cuit'],
+                'cuit' => 'required|cuit',
             ]
         )->fails());
 
@@ -120,7 +120,7 @@ class CuitTest extends TestCase
                 'cuit' => '20123456786',
             ],
             [
-                'cuit' => ['required', 'cuit'],
+                'cuit' => 'required|cuit',
             ]
         )->passes());
     }
