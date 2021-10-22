@@ -1,12 +1,18 @@
 {
   "name": "iutrace/laravel-cuit-validator",
-  "description": "Argentinian CUIT Validator",
+  "description": "Argentinian CUIT and CUIL Validator",
   "type": "library",
   "keywords": [
     "iutrace",
+    "argentina",
     "laravel",
     "cuit",
-    "validator"
+    "cuil",
+    "afip",
+    "anses",
+    "validator",
+    "validation",
+    "rules"
   ],
   "homepage": "https://github.com/iutrace/laravel-cuit-validator",
   "license": "MIT",
