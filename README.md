@@ -4,7 +4,7 @@ Argentinian CUIT and CUIL Rules for laravel validation
 ## Installation
 
 ```console
-$ composer require iutrace/laravel-cuit-validator
+$ composer require defaltuser-24/laravel-cuit-validator:dev-master
 ```
 
 ## Usage
