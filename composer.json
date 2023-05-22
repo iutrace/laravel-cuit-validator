@@ -1,5 +1,5 @@
 {
-  "name": "iutrace/laravel-cuit-validator",
+  "name": "defaltuser-24/laravel-cuit-validator",
   "description": "Argentinian CUIT and CUIL Validator",
   "type": "library",
   "keywords": [
@@ -14,7 +14,7 @@
     "validation",
     "rules"
   ],
-  "homepage": "https://github.com/iutrace/laravel-cuit-validator",
+  "homepage": "https://github.com/DEFALTUSER-24/laravel-cuit-validator",
   "license": "MIT",
   "authors": [
     {
