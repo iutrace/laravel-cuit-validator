@@ -42,6 +42,8 @@ class Cuit implements Rule
 
     public static function validate($value): bool
     {
+        $value = str_replace(['-', ' '], '', $value);
+
         if (strlen($value) != 11) {
             return false;
         }
