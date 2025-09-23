@@ -13,7 +13,7 @@ class Cuil extends Cuit
         27,
     ];
 
-    public static function replacerMessage($attribute)
+    public static function replacerMessage(string $attribute): string
     {
         return __('iutrace::validation.cuil', [
             'attribute' => $attribute,

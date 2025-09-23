@@ -19,8 +19,7 @@ class Cuit implements Rule
         34,
     ];
 
-    /* @var $attribute String */
-    protected $attribute;
+    protected string $attribute;
 
     /**
      * @inheritDoc
@@ -35,18 +34,18 @@ class Cuit implements Rule
     /**
      * @inheritDoc
      */
-    public function message()
+    public function message(): string
     {
         return static::replacerMessage($this->attribute);
     }
 
-    public static function validate($value): bool
+    public static function validate(mixed $value): bool
     {
-        if (strlen($value) != 11) {
+        if (!is_string($value) || strlen($value) !== 11) {
             return false;
         }
 
-        if (! Str::startsWith($value, static::TYPES)) {
+        if (!Str::startsWith($value, static::TYPES)) {
             return false;
         }
 
@@ -59,7 +58,7 @@ class Cuit implements Rule
         $multiplier = 2;
         $accumulator = 0;
         foreach ($digits as $digit) {
-            $accumulator += $digit * $multiplier;
+            $accumulator += (int) $digit * $multiplier;
 
             $multiplier = ($multiplier + 1) % 8;
             $multiplier = $multiplier === 0 ? 2 : $multiplier;
@@ -67,16 +66,16 @@ class Cuit implements Rule
 
         $calculatedVerifier = 11 - ($accumulator % 11);
 
-        if ($calculatedVerifier == 11) {
+        if ($calculatedVerifier === 11) {
             $calculatedVerifier = 0;
-        } elseif ($calculatedVerifier == 10) {
+        } elseif ($calculatedVerifier === 10) {
             $calculatedVerifier = 1;
         }
 
-        return $verifier == $calculatedVerifier;
+        return (int) $verifier === $calculatedVerifier;
     }
 
-    public static function replacerMessage($attribute)
+    public static function replacerMessage(string $attribute): string
     {
         return __('iutrace::validation.cuit', [
             'attribute' => $attribute,
