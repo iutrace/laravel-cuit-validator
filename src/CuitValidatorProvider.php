@@ -30,7 +30,7 @@ class CuitValidatorProvider extends ServiceProvider
 
     /**
      * Get the language path for publishing translations.
-     * 
+     *
      * @return string
      */
     private function getLanguagePath(): string

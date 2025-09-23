@@ -41,11 +41,11 @@ class Cuit implements Rule
 
     public static function validate(mixed $value): bool
     {
-        if (!is_string($value) || strlen($value) !== 11) {
+        if (! is_string($value) || strlen($value) !== 11) {
             return false;
         }
 
-        if (!Str::startsWith($value, static::TYPES)) {
+        if (! Str::startsWith($value, static::TYPES)) {
             return false;
         }
 
